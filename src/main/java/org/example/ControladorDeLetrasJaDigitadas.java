@@ -1,0 +1,76 @@
+package org.example;
+
+public class ControladorDeLetrasJaDigitadas implements Cloneable
+{
+    private String letrasJaDigitadas;
+
+    public ControladorDeLetrasJaDigitadas ()
+    {
+        this.letrasJaDigitadas = "";
+        // torna this.letrasJaDigitadas igual ao String vazio
+    }
+
+    public boolean isJaDigitada (char letra)
+    {
+        for(int i=0;i<this.letrasJaDigitadas.length(); i++){
+            if(letra == this.letrasJaDigitadas.charAt(i)) return true;
+        }
+        return false;
+        // percorrer o String this.letrasJaDigitadas e verificar se ele
+        // possui a letra fornecida, retornando true em caso afirmativo
+        // ou false em caso negativo
+    }
+
+    public void registre (char letra) throws Exception
+    {
+        if(this.isJaDigitada(letra)) throw new Exception("Letra ja digitada!");
+//        this.letrasJaDigitadas = this.letrasJaDigitadas + letra;
+        this.letrasJaDigitadas = this.letrasJaDigitadas + letra;
+		// verifica se a letra fornecida ja foi digitada (pode usar
+		// o método this.isJaDigitada, para isso), lancando uma exceção
+		// em caso afirmativo.
+		// concatena a letra fornecida a this.letrasJaDigitadas.
+    }
+
+    public String toString ()
+    {
+        StringBuffer letrasDigitadas = new StringBuffer();
+        String Virgle = ", ";
+        for(int i=0;i<this.letrasJaDigitadas.length();i++){
+            if(this.letrasJaDigitadas.length()-1 == i) Virgle = "";
+            letrasDigitadas.append(this.letrasJaDigitadas.charAt(i));
+            letrasDigitadas.append(Virgle);
+        }
+        return letrasJaDigitadas.toString();
+		// retorna um String com TODAS as letras presentes em
+		// this.letrasJaDigitadas separadas por vírgula (,).
+    }
+
+    public boolean equals (Object obj)
+    {
+        // verificar se this e obj são iguais
+        return this.letrasJaDigitadas.equals(obj);
+    }
+
+    public int hashCode ()
+    {
+        // calcular e retornar o hashcode de this
+        return 0;
+    }
+
+    public ControladorDeLetrasJaDigitadas(
+    ControladorDeLetrasJaDigitadas controladorDeLetrasJaDigitadas)
+    throws Exception // construtor de cópia
+    {
+        // copiar c.letrasJaDigitadas em this.letrasJaDigitadas
+        this.letrasJaDigitadas = controladorDeLetrasJaDigitadas.letrasJaDigitadas;
+    }
+
+    public Object clone ()
+    {
+        ControladorDeLetrasJaDigitadas clone = new ControladorDeLetrasJaDigitadas();
+        clone.letrasJaDigitadas = this.letrasJaDigitadas;
+        return clone;
+        // criar uma cópia do this com o construtor de cópia e retornar
+    }
+}
