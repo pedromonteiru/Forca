@@ -6,7 +6,7 @@ public class Palavra implements Comparable<Palavra>
 
     public Palavra (String texto) throws Exception
     {
-        if(this.texto.isEmpty()) throw new Exception("Insira um caracter");
+        if(texto.isEmpty()) throw new Exception("Insira um caracter");
         this.texto = texto;
         // verifica se o texto recebido é nulo ou então vazio,
         // ou seja, sem nenhum caractere, lançando exceção.

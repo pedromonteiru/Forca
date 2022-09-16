@@ -28,10 +28,10 @@ public class Tracinhos implements Cloneable
     {
         for(int i=0;i<this.texto.length;i++){
             if(this.texto[i] == '_'){
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public String toString ()
