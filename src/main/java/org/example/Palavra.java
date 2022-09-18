@@ -49,16 +49,22 @@ public class Palavra implements Comparable<Palavra>
     {
         return this.texto.length();
     }
-
+    @Override
     public String toString ()
     {
         return this.texto;
     }
 
+    @Override
     public boolean equals (Object obj)
     {
-        if(this.texto.equals(obj)) return true;
-        return false;
+        if(this==obj) return true;
+        if(obj==null) return false;
+
+        if(this.getClass() != obj.getClass()) return false;
+        Palavra control = (Palavra) obj;
+
+        return this.texto.equals(control.texto);
         // verificar se this e obj possuem o mesmo conteúdo, retornando
         // true no caso afirmativo ou false no caso negativo
     }

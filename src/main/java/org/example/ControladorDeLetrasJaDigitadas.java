@@ -31,25 +31,33 @@ public class ControladorDeLetrasJaDigitadas implements Cloneable
 		// em caso afirmativo.
 		// concatena a letra fornecida a this.letrasJaDigitadas.
     }
-
+    @Override
     public String toString ()
     {
         StringBuffer letrasDigitadas = new StringBuffer();
         String Virgle = ", ";
         for(int i=0;i<this.letrasJaDigitadas.length();i++){
-            if(this.letrasJaDigitadas.length()-1 == i) Virgle = "";
             letrasDigitadas.append(this.letrasJaDigitadas.charAt(i));
+            if(this.letrasJaDigitadas.length()-1 == i) Virgle = "";
             letrasDigitadas.append(Virgle);
         }
-        return letrasJaDigitadas.toString();
+        return letrasJaDigitadas;
 		// retorna um String com TODAS as letras presentes em
 		// this.letrasJaDigitadas separadas por vírgula (,).
     }
-
+    @Override
     public boolean equals (Object obj)
     {
         // verificar se this e obj são iguais
-        return this.letrasJaDigitadas.equals(obj);
+        if(this==obj) return true;
+        if(obj==null) return false;
+
+        if(this.getClass() != obj.getClass()) return false;
+        ControladorDeLetrasJaDigitadas control = (ControladorDeLetrasJaDigitadas) obj;
+
+        if(this.letrasJaDigitadas != control.letrasJaDigitadas) return false;
+
+        return true;
     }
 
     public int hashCode ()

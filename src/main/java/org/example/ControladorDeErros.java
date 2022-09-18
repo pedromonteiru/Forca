@@ -32,17 +32,25 @@ public class ControladorDeErros implements Cloneable
         // returna true se this.qtdErr for igual a this.qtdMax,
         // ou então false, caso contrario.
     }
-
+    @Override
     public String toString ()
     {
         return this.qtdErr + "/" + this.qtdMax;
     }
-
+    @Override
     public boolean equals (Object obj)
     {
-        if(obj.equals(qtdMax)) return true;
-        return false;
-        //CHECAR
+        if(this==obj) return true;
+        if(obj==null) return false;
+
+        if(this.getClass() != obj.getClass()) return false;
+
+        ControladorDeErros control = (ControladorDeErros) obj;
+
+        if(this.qtdMax != control.qtdMax) return false;
+        if(this.qtdErr != control.qtdErr) return false;
+
+        return true;
         // verificar se this e obj possuem o mesmo conteúdo, retornando
         // true no caso afirmativo ou false no caso negativo
     }

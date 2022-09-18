@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class Tracinhos implements Cloneable
 {
     private char texto [];
@@ -33,7 +35,7 @@ public class Tracinhos implements Cloneable
         }
         return false;
     }
-
+    @Override
     public String toString ()
     {
         StringBuffer palavra = new StringBuffer();
@@ -43,8 +45,15 @@ public class Tracinhos implements Cloneable
         return palavra.toString();
     }
 
+    @Override
     public boolean equals (Object obj) {
-        return this.texto.equals(obj);
+        if(this==obj) return true;
+        if(obj==null) return false;
+
+        if(this.getClass() != obj.getClass()) return false;
+        Tracinhos control= (Tracinhos) obj;
+
+        return Arrays.equals(this.texto, control.texto);
     }
 
     public int hashCode () {
