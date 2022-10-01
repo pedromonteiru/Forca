@@ -59,11 +59,15 @@ public class ControladorDeLetrasJaDigitadas implements Cloneable
 
         return true;
     }
-
+    @Override
     public int hashCode ()
     {
-        // calcular e retornar o hashcode de this
-        return 0;
+        int ret = 2403;
+
+        ret = 13*ret+ new String(this.letrasJaDigitadas).hashCode();
+        if(ret<0) ret=-ret;
+
+        return ret;
     }
 
     public ControladorDeLetrasJaDigitadas(
@@ -71,14 +75,18 @@ public class ControladorDeLetrasJaDigitadas implements Cloneable
     throws Exception // construtor de cópia
     {
         // copiar c.letrasJaDigitadas em this.letrasJaDigitadas
+        if(controladorDeLetrasJaDigitadas == null) throw new Exception("Construtor de cópia nulo!");
         this.letrasJaDigitadas = controladorDeLetrasJaDigitadas.letrasJaDigitadas;
     }
 
     public Object clone ()
     {
-        ControladorDeLetrasJaDigitadas clone = new ControladorDeLetrasJaDigitadas();
-        clone.letrasJaDigitadas = this.letrasJaDigitadas;
-        return clone;
+        ControladorDeLetrasJaDigitadas ret = null;
+        try {
+            ret= new ControladorDeLetrasJaDigitadas(this);
+        }catch (Exception e){}
+
+        return ret;
         // criar uma cópia do this com o construtor de cópia e retornar
     }
 }

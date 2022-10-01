@@ -49,6 +49,7 @@ public class Palavra implements Comparable<Palavra>
     {
         return this.texto.length();
     }
+
     @Override
     public String toString ()
     {
@@ -68,15 +69,22 @@ public class Palavra implements Comparable<Palavra>
         // verificar se this e obj possuem o mesmo conteúdo, retornando
         // true no caso afirmativo ou false no caso negativo
     }
-
+    @Override
     public int hashCode ()
     {
 //        this.texto.hashCode();
         // calcular e retornar o hashcode de this
-        return 0;
+        int ret = 2403;
+
+        ret = 13*ret+ new String(this.texto).hashCode();
+
+        if(ret<0)ret=-ret;
+
+        return ret;
     }
-    public int compareTo (Palavra palavra)
+    public int compareTo (Palavra palavra)//VER DEPOIS SE TEM Q ARRUMAR OU DEIXAR PADRÃO
     {
-        return this.texto.compareTo(palavra.texto);
+        if(!this.texto.equals(palavra.texto)) return -10;
+        return 0;
     }
 }

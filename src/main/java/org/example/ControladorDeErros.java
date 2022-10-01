@@ -54,16 +54,23 @@ public class ControladorDeErros implements Cloneable
         // verificar se this e obj possuem o mesmo conteúdo, retornando
         // true no caso afirmativo ou false no caso negativo
     }
-
+    @Override
     public int hashCode ()
     {
-        return 0;
+        int ret = 2304;
+
+        ret = 13*ret + new Integer(this.qtdErr).hashCode();
+        ret = 13*ret + new Integer(this.qtdMax).hashCode();
+
+        if(ret<0) ret = -ret;
+
+        return ret;
         // calcular e retornar o hashcode de this/
-        // FAZER
     }
 
     public ControladorDeErros (ControladorDeErros c) throws Exception // construtor de cópia
     {
+        if(c == null) throw new Exception("Construtor de cópia nulo!");
         this.qtdMax = c.qtdMax;
         this.qtdErr = c.qtdErr;
         // copiar c.qtdMax e c.qtdErr, respectivamente em, this.qtdMax e this.qtdErr
@@ -72,12 +79,11 @@ public class ControladorDeErros implements Cloneable
     public Object clone ()
     {
         // returnar uma cópia de this
+        ControladorDeErros ret = null;
         try {
-            ControladorDeErros c = new ControladorDeErros(this.qtdMax);
-            c.qtdErr = this.qtdErr;
-            return c;
-        } catch (Exception e) {
-            throw new RuntimeException("Erro ao clonar!");
-        }
+            ret = new ControladorDeErros(this);
+        } catch (Exception e) {}
+
+        return ret;
     }
 }

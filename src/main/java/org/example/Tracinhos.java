@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Tracinhos implements Cloneable
@@ -13,7 +14,6 @@ public class Tracinhos implements Cloneable
         for(int i=0; i<qtd;i++){
             this.texto[i]= '_';
         }
-
     }
 
     public void revele (int posicao, char letra) throws Exception
@@ -56,29 +56,42 @@ public class Tracinhos implements Cloneable
         return Arrays.equals(this.texto, control.texto);
     }
 
+    @Override
     public int hashCode () {
         // calcular e retornar o hashcode de this
-        return 0;
+        int ret = 2403;
+
+        for (int i = 0; i < this.texto.length; i++) {
+            ret = 13 * ret + Character.valueOf(this.texto[i]).hashCode();
+        }
+        if(ret<0) ret=-ret;
+        return ret;
     }
 
     public Tracinhos (Tracinhos t) throws Exception // construtor de cópia
     {
-        Tracinhos tracinhos = new Tracinhos(t.texto.length);
-        this.texto = tracinhos.texto;
+        if(t == null) throw new Exception("Construtor de cópia nulo!");
+        try {
+            int length = t.texto.length;
+            this.texto = new char[length];
+
+            for (int i = 0; i < length; i++) {
+              this.texto[i] = t.texto[i];
+              }
+        } catch (Exception exception) {
+            throw new Exception("Erro na cópia!");
+        }
         // intanciar this.texto um vetor com o mesmo tamanho de t.texto
         // e copilar o conteúdo de t.texto para this.texto
     }
 
     public Object clone ()
     {
+        Tracinhos ret = null;
         try {
-            Tracinhos clone = new Tracinhos(this.texto.length);
-            clone.texto = this.texto;
-            return clone;
-        } catch (Exception e) {
-            throw new RuntimeException("Tamanho invalido");
-        }
-
+            ret = new Tracinhos(this);
+        } catch (Exception e) {}
+        return ret;
         // retornar uma copia de this
     }
 }
