@@ -9,12 +9,21 @@ class ControladorDeErrosTest {
 
     ControladorDeErros controladorDeErros;
 
-
     @Test
-    void registreUmErro() throws Exception {
+    void construtorInvalido(){
+        try{
+            controladorDeErros = new ControladorDeErros(0);
+        } catch (Exception e){
+            e.getMessage().equals("Quantidade inválida");
+        }
+    }
+    @Test
+    void registreUmErro(){
+        try{
         controladorDeErros = new ControladorDeErros(5);
         controladorDeErros.registreUmErro();
-        assertEquals(controladorDeErros.toString(), "1/5");
+        assertEquals(controladorDeErros.toString(), "1/5");}
+        catch (Exception e){}
     }
 
     @Test
@@ -25,30 +34,33 @@ class ControladorDeErrosTest {
         controladorDeErros.registreUmErro();
         controladorDeErros.registreUmErro();}
         catch(Exception e){
-            System.out.println(e.getMessage().equals("Quantidade de erros superiores ao máximo"));
+            e.getMessage().equals("Quantidade de erros superiores ao máximo");
+//            System.out.println(e.getMessage().equals("Quantidade de erros superiores ao máximo"));
         }
     }
 
     @Test
-    void isAtingidoMaximoDeErros() throws Exception {
+    void isAtingidoMaximoDeErros(){
+        try {
         controladorDeErros = new ControladorDeErros(2);
         controladorDeErros.registreUmErro();
-        System.out.println(controladorDeErros.isAtingidoMaximoDeErros());
         controladorDeErros.registreUmErro();
-        System.out.println(controladorDeErros.isAtingidoMaximoDeErros());
+        assertTrue(controladorDeErros.isAtingidoMaximoDeErros());
+        }catch (Exception e){
+        }
     }
 
     @Test
-    void testToString()throws Exception {
+    void testToString() {
+        try{
         controladorDeErros = new ControladorDeErros(4);
-        System.out.println(controladorDeErros.toString());
         controladorDeErros.registreUmErro();
-        System.out.println(controladorDeErros.toString());
         controladorDeErros.registreUmErro();
-        System.out.println(controladorDeErros.toString());
         controladorDeErros.registreUmErro();
-        System.out.println(controladorDeErros.toString());
-        assertEquals(controladorDeErros.toString(), "3/4");
+        assertEquals(controladorDeErros.toString(), "3/4");}
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test

@@ -10,7 +10,7 @@ public class ControladorDeErros implements Cloneable
             this.qtdMax = qtdMax;
         }
         else{
-            throw new Exception("Quatidade negativa");
+            throw new Exception("Quantidade inválida");
         }
         // verifica se qtdMax fornecida não é positiva, lançando
         // uma exceção.

@@ -7,6 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class PalavraTest {
 
     Palavra palavra;
+
+    @Test
+    void construtorNulo(){
+        try{
+            palavra = new Palavra("");
+        }catch (Exception e){
+            e.getMessage().equals("Insira um caracter");
+            System.out.println(e.getMessage());
+        }
+    }
+
     @Test
     void getQuantidade() {
         try{
