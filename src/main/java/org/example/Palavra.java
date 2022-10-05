@@ -74,7 +74,7 @@ public class Palavra implements Comparable<Palavra>
     {
 //        this.texto.hashCode();
         // calcular e retornar o hashcode de this
-        int ret = 2403;
+        int ret = 2;
 
         ret = 13*ret+ new String(this.texto).hashCode();
 
@@ -82,7 +82,7 @@ public class Palavra implements Comparable<Palavra>
 
         return ret;
     }
-    public int compareTo (Palavra palavra)//VER DEPOIS SE TEM Q ARRUMAR OU DEIXAR PADRÃO
+    public int compareTo (Palavra palavra)
     {
         if(!this.texto.equals(palavra.texto)) return -10;
         return 0;

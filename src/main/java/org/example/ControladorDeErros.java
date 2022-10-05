@@ -19,7 +19,7 @@ public class ControladorDeErros implements Cloneable
 
     public void registreUmErro () throws Exception
     {
-        if(this.qtdErr == this.qtdMax) throw new Exception("Qtd erro = qtd Max");
+        if(this.qtdErr == this.qtdMax) throw new Exception("Quantidade de erros superiores ao máximo");
         this.qtdErr++;
         // verifica se this.qtdErr ja é igual a this.qtdMax,
         // lançando excecao em caso positivo ou
@@ -57,7 +57,7 @@ public class ControladorDeErros implements Cloneable
     @Override
     public int hashCode ()
     {
-        int ret = 2304;
+        int ret = 2;
 
         ret = 13*ret + new Integer(this.qtdErr).hashCode();
         ret = 13*ret + new Integer(this.qtdMax).hashCode();

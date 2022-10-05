@@ -35,13 +35,13 @@ public class ControladorDeLetrasJaDigitadas implements Cloneable
     public String toString ()
     {
         StringBuffer letrasDigitadas = new StringBuffer();
-        String Virgle = ", ";
+        String Virgle = ",";
         for(int i=0;i<this.letrasJaDigitadas.length();i++){
             letrasDigitadas.append(this.letrasJaDigitadas.charAt(i));
             if(this.letrasJaDigitadas.length()-1 == i) Virgle = "";
             letrasDigitadas.append(Virgle);
         }
-        return letrasJaDigitadas;
+        return letrasDigitadas.toString();
 		// retorna um String com TODAS as letras presentes em
 		// this.letrasJaDigitadas separadas por vírgula (,).
     }
@@ -62,7 +62,7 @@ public class ControladorDeLetrasJaDigitadas implements Cloneable
     @Override
     public int hashCode ()
     {
-        int ret = 2403;
+        int ret = 23;
 
         ret = 13*ret+ new String(this.letrasJaDigitadas).hashCode();
         if(ret<0) ret=-ret;
