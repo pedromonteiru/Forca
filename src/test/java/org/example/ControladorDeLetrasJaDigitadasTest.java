@@ -8,6 +8,16 @@ class ControladorDeLetrasJaDigitadasTest {
     ControladorDeLetrasJaDigitadas controladorDeLetrasJaDigitadas;
 
     @Test
+    void testConstrutor(){
+        try{
+            ControladorDeLetrasJaDigitadas cNull = null;
+            controladorDeLetrasJaDigitadas = new ControladorDeLetrasJaDigitadas(cNull);
+        }catch (Exception e){
+            assertEquals(e.getMessage(), "Construtor de cópia nulo!");
+        }
+    }
+
+    @Test
     void isJaDigitada() {
         try{
         controladorDeLetrasJaDigitadas = new ControladorDeLetrasJaDigitadas();
@@ -43,7 +53,7 @@ class ControladorDeLetrasJaDigitadasTest {
             controladorDeLetrasJaDigitadas.registre('A');
         }
         catch (Exception e){
-            e.getMessage().equals("Letra ja digitada!");
+            assertEquals(e.getMessage(), "Letra ja digitada!");
         }
     }
 

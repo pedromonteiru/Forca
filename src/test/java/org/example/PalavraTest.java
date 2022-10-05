@@ -13,7 +13,7 @@ class PalavraTest {
         try{
             palavra = new Palavra("");
         }catch (Exception e){
-            e.getMessage().equals("Insira um caracter");
+            assertEquals("Insira um caracter", e.getMessage());
             System.out.println(e.getMessage());
         }
     }
@@ -40,7 +40,7 @@ class PalavraTest {
             palavra = new Palavra("JAVA");
             palavra.getPosicaoDaIezimaOcorrencia(2, 'B');
         }catch (Exception e){
-            e.getMessage().equals("Letra não existente!");
+            assertEquals(e.getMessage(), "Letra não existente!");
         }
     }
 
@@ -51,7 +51,7 @@ class PalavraTest {
             assertEquals(palavra.getPosicaoDaIezimaOcorrencia(0, 'A'), 1);
 
         }catch (Exception e){
-            e.getMessage().equals("Letra não existente!");
+            assertEquals(e.getMessage(), "Letra não existente!");
         }
     }
 
@@ -114,8 +114,4 @@ class PalavraTest {
         }catch (Exception e){}
     }
 
-//    @Test
-//    void compareTo() {
-//
-//    }
 }

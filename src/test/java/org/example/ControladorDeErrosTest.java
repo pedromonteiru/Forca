@@ -14,7 +14,17 @@ class ControladorDeErrosTest {
         try{
             controladorDeErros = new ControladorDeErros(0);
         } catch (Exception e){
-            e.getMessage().equals("Quantidade inválida");
+            assertEquals(e.getMessage(), "Quantidade inválida");
+        }
+    }
+
+    @Test
+    void construtorInvalido2(){
+        try{
+            ControladorDeErros controlNull = null;
+            controladorDeErros = new ControladorDeErros(controlNull);
+        } catch (Exception e){
+            assertEquals(e.getMessage(), "Construtor de cópia nulo!");
         }
     }
     @Test
@@ -34,7 +44,7 @@ class ControladorDeErrosTest {
         controladorDeErros.registreUmErro();
         controladorDeErros.registreUmErro();}
         catch(Exception e){
-            e.getMessage().equals("Quantidade de erros superiores ao máximo");
+            assertEquals(e.getMessage(), "Quantidade de erros superiores ao máximo");
 //            System.out.println(e.getMessage().equals("Quantidade de erros superiores ao máximo"));
         }
     }

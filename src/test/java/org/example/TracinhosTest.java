@@ -9,11 +9,21 @@ class TracinhosTest {
     Tracinhos tracinhos;
 
     @Test
-    void construtorPadrao() {
+    void failConstructors() {
         try{
             tracinhos = new Tracinhos(0);
         }catch (Exception e){
-            e.getMessage().equals("Tamanho incorreto!");
+            assertEquals(e.getMessage(), "Tamanho incorreto!");
+        }
+    }
+
+    @Test
+    void failConstructors2() {
+        try{
+            Tracinhos tracinhosNull = null;
+            tracinhos = new Tracinhos(tracinhosNull);
+        }catch (Exception e){
+            assertEquals(e.getMessage(), "Construtor de cópia nulo!");
         }
     }
 
@@ -32,7 +42,7 @@ class TracinhosTest {
             tracinhos = new Tracinhos(4);
             tracinhos.revele(5, 'A');
         }catch (Exception e){
-            e.getMessage().equals("Não existente!");
+            assertEquals(e.getMessage(), "Não existente!");
         }
     }
 
