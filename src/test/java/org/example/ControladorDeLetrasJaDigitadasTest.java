@@ -40,6 +40,18 @@ class ControladorDeLetrasJaDigitadasTest {
         try{
             controladorDeLetrasJaDigitadas = new ControladorDeLetrasJaDigitadas();
             controladorDeLetrasJaDigitadas.registre('A');
+            controladorDeLetrasJaDigitadas.registre('A');
+        }
+        catch (Exception e){
+            e.getMessage().equals("Letra ja digitada!");
+        }
+    }
+
+    @Test
+    void registre3() {
+        try{
+            controladorDeLetrasJaDigitadas = new ControladorDeLetrasJaDigitadas();
+            controladorDeLetrasJaDigitadas.registre('A');
             assertTrue(controladorDeLetrasJaDigitadas.isJaDigitada('J'));
         }
         catch (Exception e){}
