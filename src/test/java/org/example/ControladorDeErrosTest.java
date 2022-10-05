@@ -87,7 +87,7 @@ class ControladorDeErrosTest {
         try {
             controladorDeErros = new ControladorDeErros(3);
             controladorDeErros.registreUmErro();
-            assertEquals(controladorDeErros.hashCode(), 3903);
+            assertEquals(controladorDeErros.hashCode(), 354);
         } catch (Exception e) {}
     }
 

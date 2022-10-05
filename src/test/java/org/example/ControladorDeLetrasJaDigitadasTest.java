@@ -30,6 +30,7 @@ class ControladorDeLetrasJaDigitadasTest {
     void isJaDigitada2() {
         try{
             controladorDeLetrasJaDigitadas = new ControladorDeLetrasJaDigitadas();
+            controladorDeLetrasJaDigitadas.registre('A');
             assertTrue(controladorDeLetrasJaDigitadas.isJaDigitada('A'));
         }
         catch (Exception e){}
@@ -62,7 +63,7 @@ class ControladorDeLetrasJaDigitadasTest {
         try{
             controladorDeLetrasJaDigitadas = new ControladorDeLetrasJaDigitadas();
             controladorDeLetrasJaDigitadas.registre('A');
-            assertTrue(controladorDeLetrasJaDigitadas.isJaDigitada('J'));
+            assertFalse(controladorDeLetrasJaDigitadas.isJaDigitada('J'));
         }
         catch (Exception e){}
     }

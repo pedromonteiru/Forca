@@ -38,9 +38,9 @@ class PalavraTest {
     void getPosicaoDaIezimaOcorrencia() {
         try{
             palavra = new Palavra("JAVA");
-            palavra.getPosicaoDaIezimaOcorrencia(2, 'B');
+            palavra.getPosicaoDaIezimaOcorrencia(2, 'A');
         }catch (Exception e){
-            assertEquals(e.getMessage(), "Letra não existente!");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -49,7 +49,6 @@ class PalavraTest {
         try{
             palavra = new Palavra("JAVA");
             assertEquals(palavra.getPosicaoDaIezimaOcorrencia(0, 'A'), 1);
-
         }catch (Exception e){
             assertEquals(e.getMessage(), "Letra não existente!");
         }
